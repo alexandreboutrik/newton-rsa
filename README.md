@@ -1,14 +1,15 @@
-# Newton-Raphson x Euclides Estendido
+# Newton-Raphson x Extended Euclidean Algorithm
 
 <img align="right" width="128px" src="./.media/math.png">
 
 ![Version Badge](https://img.shields.io/badge/status-in%20development-red)
 
-Esse repositório contém as implementações discutidas no artigo de estudo `Criptografia: Newton-Raphson e Euclides Estendido, Um Estudo Comparativo`. O objetivo do estudo é comparar o Algoritmo de Euclides Estendido com o método de Newton-Rasphson. Para tal, realizamos benchmarks utilizando uma implementação (muito) simplificada do RSA como exemplo prático.
+This repository contains the implementations presented in the study article `Cryptography: Newton-Raphson and Extended Euclid, A Comparative Study`. The study aims to evaluate the effectiveness of the Extended Euclidean Algorithm (EEA) compared to the Newton-Raphson (NR) method. To achieve this, benchmarks were performed using a (highly) simplified RSA implementation as a pratical example. The article was developed as the final project for the Numerical Calculus course at UTFPR-TD.
 
-## Status de desenvolvimento
+## Development status
 
 <!---
+Possible status:
 :white_check_mark: Done
 :black_square_button: In progress
 :white_square_button: Planned
@@ -16,14 +17,14 @@ Esse repositório contém as implementações discutidas no artigo de estudo `Cr
 
 | Feature                  | Status                             | Description |
 |:-------------------------|:-----------------------------------|:------------|
-| Design                   | :black_square_button: In progress  | Decidir quais linguagens utilizar para implementar os algoritmos |
-| RSA                      | :white_square_button: Planned      | Implementar os 4 passo-a-passos do RSA com exceção do parâmetro 'd' |
-| Euclides                 | :white_square_button: Planned      | Implementar o Algoritmo de Euclides estendido |
-| Newton-Raphson           | :white_square_button: Planned      | Implementar o método de Newton-Rasphson |
+| Software designing       | :black_square_button: In progress  | Decide which languages to use and how to implement the RSA, EEA and NR algorithms |
+| Simplified RSA           | :white_square_button: Planned      | Implement the 5 steps of RSA, except for the 'd' parameter (calculated using EEA or NR) |
+| Extended Euclidean (EEA) | :white_square_button: Planned      | Implement the Extended Euclidean Algorithm |
+| Newton-Raphson (NR)      | :white_square_button: Planned      | Implement the Newton-Raphson method |
 
-## Instruções
+## Instructions
 
-Os benchmarks são executados em um ambiente Docker. Para compilar os códigos e executar os benchmarks, use o script `build.sh`:
+To compile the code and run the benchmarks, use the `build.sh` script:
 
 ```bash
 $ ./build.sh
@@ -31,4 +32,4 @@ $ ./build.sh
 
 ## License
 
-Esse repositório e seus códigos estão sobre a [LICENÇA MIT](http://opensource.org/license/MIT). Sinta-se à vontade para usar, modificar e distribuir o código conforme necessário. Consulte o arquivo [LICENSE](LICENSE) para mais informações.
+This project is licensed under the [MIT License](https://opensource.org/licence/MIT). Fell free to use, modify, and distribute the code as needed. See the [LICENSE](LICENSE) file for more information.
