@@ -1,10 +1,10 @@
-# Newton-Raphson x Euclides Estendido
+# Newton-Raphson x RSA
 
 <img align="right" width="128px" src="./.media/math.png">
 
 ![Version Badge](https://img.shields.io/badge/status-in%20development-red)
 
-Esse repositório contém as implementações abordadas no artigo de estudo `Criptografia: Newton-Raphson e Euclides Estendido, Um Estudo Comparativo`. O objetivo do estudo é comparar a eficácia do Algoritmo de Euclides Estendido (AEE) com o método de Newton-Rasphson (NR). Para tal, realizamos benchmarks utilizando uma implementação (muito) simplificada do RSA como exemplo prático. O artigo foi desenvolvido como trabalho de conclusão da disciplina de Cálculo Numérico na UTFPR-TD.
+Esse repositório contém as implementações abordadas no artigo de estudo `Métodos Numéricos na Criptografia: Newton-Raphson vs. RSA`. O objetivo do estudo é comparar a eficácia do método de Newton-Raphson (NR) na resolução do problema do inverso modular, comparando-o com abordagens bem estabelecidas, como o Algoritmo de Euclides Estendido (EEA) e o Pequeno Teorema de Fermat (FLT). Para tal, realizamos benchmarks utilizando uma implementação (muito) simplificada do RSA como exemplo prático. O artigo foi desenvolvido como trabalho de conclusão da disciplina de Cálculo Numérico na UTFPR-TD.
 
 ## Status de desenvolvimento
 
@@ -17,9 +17,10 @@ Possible status:
 
 | Feature                  | Status                             | Description |
 |:-------------------------|:-----------------------------------|:------------|
-| Software designing       | :black_square_button: In progress  | Decidir quais linguagens utilizar, e como implementar o RSA, AEE e NR |
+| Software designing       | :black_square_button: In progress  | Decidir quais linguagens utilizar, e como implementar o RSA, EEA e NR |
 | Simplified RSA           | :white_square_button: Planned      | Implementar as 5 etapas do RSA com exceção do parâmetro 'd' (que é calculado via AEE e/ou NR) |
-| Euclides estendido (AEE) | :white_square_button: Planned      | Implementar o Algoritmo de Euclides estendido |
+| Euclides estendido (EEA) | :white_square_button: Planned      | Implementar o Algoritmo de Euclides estendido |
+| Pequeno Teorema de Fermat (FLT) | :white_square_button: Planned | Implementar o Pequeno Teorema de Fermat |
 | Newton-Raphson (NR)      | :white_square_button: Planned      | Implementar o método de Newton-Rasphson |
 
 ## Instruções

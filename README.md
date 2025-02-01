@@ -1,10 +1,10 @@
-# Newton-Raphson x Extended Euclidean Algorithm
+# Newton-Raphson x RSA
 
 <img align="right" width="128px" src="./.media/math.png">
 
 ![Version Badge](https://img.shields.io/badge/status-in%20development-red)
 
-This repository contains the implementations presented in the study article `Cryptography: Newton-Raphson and Extended Euclid, A Comparative Study`. The study aims to evaluate the effectiveness of the Extended Euclidean Algorithm (EEA) compared to the Newton-Raphson (NR) method. To achieve this, benchmarks were performed using a (highly) simplified RSA implementation as a pratical example. The article was developed as the final project for the Numerical Calculus course at UTFPR-TD.
+This repository contains the implementations presented in the study article `Numerical Methods in Cryptography: Newton-Raphson vs. RSA`. The study aims to evaluate the efficiency of the Newton-Raphson (NR) method in solving the modular inverse problem, comparing it to well-established approaches such as the Extended Euclidean Algorithm (EEA) and Fermat's Little Theorem (FLT). To achieve this, benchmarks were performed using a (highly) simplified RSA implementation as a pratical example. The article was developed as the final project for the Numerical Calculus course at UTFPR-TD.
 
 ## Development status
 
@@ -20,6 +20,7 @@ Possible status:
 | Software designing       | :black_square_button: In progress  | Decide which languages to use and how to implement the RSA, EEA and NR algorithms |
 | Simplified RSA           | :white_square_button: Planned      | Implement the 5 steps of RSA, except for the 'd' parameter (calculated using EEA or NR) |
 | Extended Euclidean (EEA) | :white_square_button: Planned      | Implement the Extended Euclidean Algorithm |
+| Fermat's Little Theorem (FLT) | :white_square_button: Planned | Implement the Fermat's Little Theorem |
 | Newton-Raphson (NR)      | :white_square_button: Planned      | Implement the Newton-Raphson method |
 
 ## Instructions
