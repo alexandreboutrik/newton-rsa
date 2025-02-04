@@ -10,7 +10,7 @@ Esse repositório contém as implementações abordadas no artigo de estudo `Mé
 
 <!---
 Possible status:
-:white_check_mark: Done
+:black_check_mark: Done
 :black_square_button: In progress
 :white_square_button: Planned
 --->
@@ -18,10 +18,10 @@ Possible status:
 | Feature                  | Status                             | Description |
 |:-------------------------|:-----------------------------------|:------------|
 | Software designing       | :black_square_button: In progress  | Decidir quais linguagens utilizar, e como implementar o RSA, EEA e NR |
-| Simplified RSA           | :white_square_button: Planned      | Implementar as 5 etapas do RSA com exceção do parâmetro 'd' (que é calculado via AEE e/ou NR) |
-| Euclides estendido (EEA) | :white_square_button: Planned      | Implementar o Algoritmo de Euclides estendido |
-| Pequeno Teorema de Fermat (FLT) | :white_square_button: Planned | Implementar o Pequeno Teorema de Fermat |
-| Newton-Raphson (NR)      | :white_square_button: Planned      | Implementar o método de Newton-Rasphson |
+| Simplified RSA           | :black_square_button: In Progress  | Implementar as 5 etapas do RSA com exceção do parâmetro 'd' (que é calculado via AEE e/ou NR) |
+| Euclides estendido (EEA) | :black_square_button: In Progress  | Implementar o Algoritmo de Euclides estendido |
+| Pequeno Teorema de Fermat (FLT) | :black_square_button: In Progress | Implementar o Pequeno Teorema de Fermat |
+| Newton-Raphson (NR)      | :black_square_button: In Progress  | Implementar o método de Newton-Rasphson |
 
 ## Instruções
 

@@ -18,10 +18,10 @@ Possible status:
 | Feature                  | Status                             | Description |
 |:-------------------------|:-----------------------------------|:------------|
 | Software designing       | :black_square_button: In progress  | Decide which languages to use and how to implement the RSA, EEA and NR algorithms |
-| Simplified RSA           | :white_square_button: Planned      | Implement the 5 steps of RSA, except for the 'd' parameter (calculated using EEA or NR) |
-| Extended Euclidean (EEA) | :white_square_button: Planned      | Implement the Extended Euclidean Algorithm |
-| Fermat's Little Theorem (FLT) | :white_square_button: Planned | Implement the Fermat's Little Theorem |
-| Newton-Raphson (NR)      | :white_square_button: Planned      | Implement the Newton-Raphson method |
+| Simplified RSA           | :black_square_button: In progress  | Implement the 5 steps of RSA, except for the 'd' parameter (calculated using EEA or NR) |
+| Extended Euclidean (EEA) | :black_square_button: In progress  | Implement the Extended Euclidean Algorithm |
+| Fermat's Little Theorem (FLT) | :black_square_button: In progress | Implement the Fermat's Little Theorem |
+| Newton-Raphson (NR)      | :black_square_button: In progress  | Implement the Newton-Raphson method |
 
 ## Instructions
 
