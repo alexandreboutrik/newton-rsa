@@ -4,7 +4,7 @@
 
 ![Version Badge](https://img.shields.io/badge/status-in%20development-red)
 
-This repository contains the implementations presented in the study article `Numerical Methods in Cryptography: Newton-Raphson vs. RSA`. The study aims to evaluate the efficiency of the Newton-Raphson (NR) method in solving the modular inverse problem, comparing it to well-established approaches such as the Extended Euclidean Algorithm (EEA) and Fermat's Little Theorem (FLT). To achieve this, benchmarks were performed using a (highly) simplified RSA implementation as a pratical example. The article was developed as the final project for the Numerical Calculus course at UTFPR-TD.
+This repository contains the implementations presented in the study article `Numerical Methods in Cryptography: Newton-Raphson vs. RSA`. The study aims to evaluate the efficiency of the Newton-Raphson (NR) method in solving the modular inverse problem, comparing it to well-established approaches such as the Extended Euclidean Algorithm (EEA) and Euler's Theorem (ET). To achieve this, benchmarks were performed using a (highly) simplified RSA implementation as a pratical example. The article was developed as the final project for the Numerical Calculus course at UTFPR-TD.
 
 ## Development status
 
@@ -17,10 +17,10 @@ Possible status:
 
 | Feature                  | Status                             | Description |
 |:-------------------------|:-----------------------------------|:------------|
-| Software designing       | :black_square_button: In progress  | Decide which languages to use and how to implement the RSA, EEA and NR algorithms |
-| Simplified RSA           | :black_square_button: In progress  | Implement the 5 steps of RSA, except for the 'd' parameter (calculated using EEA or NR) |
+| Software designing       | :white_check_mark: Done            | Decide which languages to use and how to implement the algorithms |
+| Simplified RSA           | :black_square_button: In progress  | Implement the 5 steps of RSA, except for the 'd' parameter |
 | Extended Euclidean (EEA) | :black_square_button: In progress  | Implement the Extended Euclidean Algorithm |
-| Fermat's Little Theorem (FLT) | :black_square_button: In progress | Implement the Fermat's Little Theorem |
+| Euler's Theorem (ET)     | :black_square_button: In progress  | Implement the Euler's Theorem |
 | Newton-Raphson (NR)      | :black_square_button: In progress  | Implement the Newton-Raphson method |
 
 ## Instructions
