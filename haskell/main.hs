@@ -30,7 +30,7 @@ eea a n
         where
         (a', x', y') = egcd (b `mod` a) a
 
---- Euler's Theorem
+--- Fermat-Euler Theorem
 -- Compute the modular inverse of 'a' under modulo 'n'
 et :: Integer -> Integer -> Maybe Integer
 et a n | gcd a n /= 1 = Nothing
@@ -44,7 +44,7 @@ et a n | gcd a n /= 1 = Nothing
 --                      | iter == 0 = Just $ guess `mod` n
 --                      | otherwise = newton a n new_guess (iter - 1)
 --                      where
---                        new_guess = (guess * (2 - a * guess `div` n))
+--                        new_guess = (guess * (2 - ((a * guess) `div` n)))
 
 main = do
   print $ eea 7 120
