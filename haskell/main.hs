@@ -1,4 +1,5 @@
 import Data.Maybe (fromJust)
+import Data.Fixed
 
 --- Power function with modulus
 -- Compute 'num ^ pwr mod modulus'
@@ -33,20 +34,34 @@ eea a n
 --- Fermat-Euler Theorem
 -- Compute the modular inverse of 'a' under modulo 'n'
 et :: Integer -> Integer -> Maybe Integer
-et a n | gcd a n /= 1 = Nothing
-       | otherwise = pow a (-1) n
+et a n
+    | gcd a n /= 1 = Nothing
+    | otherwise = pow a (-1) n
 
---- Newton-Raphson method (NR)
--- Compute the modular inverse of 'a' under modulo 'n'
---- WARNING: not working
---newton :: Integer -> Integer -> Integer -> Integer -> Maybe Integer
---newton a n guess iter | gcd a n /= 1 = Nothing 
---                      | iter == 0 = Just $ guess `mod` n
---                      | otherwise = newton a n new_guess (iter - 1)
---                      where
---                        new_guess = (guess * (2 - ((a * guess) `div` n)))
+--- f1: Newton-Raphson (NR), one iteraction
+f_1 :: Integer -> Integer -> Double -> Maybe Double
+f_1 a n guess
+    | a == 0 = Nothing
+    | otherwise = Just $ (guess - ((a' * guess) + 1) / a') `mod'` n'
+    where
+      a' = fromIntegral a
+      n' = fromIntegral n
+
+--- Correction Function
+f_2 :: Integer -> Integer -> Double -> Maybe Double
+f_2 a n guess
+    | gcd a n /= 1 = Nothing
+    | otherwise = f_2' a n guess (guess - 1)
+    where
+      f_2' a n guess old_guess
+        | guess == old_guess = Just $ guess
+        | otherwise = f_2' a n (guess * (2 - a' * guess / n')) guess
+        where
+          a' = fromIntegral a
+          n' = fromIntegral n
 
 main = do
   print $ eea 7 120
   print $ et 7 120
-  -- print $ newton 7 120 1 50
+  print $ f_1 7 120 1
+  print $ f_2 7 120 1
