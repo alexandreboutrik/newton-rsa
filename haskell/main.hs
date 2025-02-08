@@ -1,5 +1,6 @@
 import Data.Maybe (fromJust)
 import Data.Fixed
+import Data.Maybe
 
 --- Power function with modulus
 -- Compute 'num ^ pwr mod modulus'
@@ -33,15 +34,28 @@ eea a n
 
 --- Fermat-Euler Theorem
 -- Compute the modular inverse of 'a' under modulo 'n'
-et :: Integer -> Integer -> Maybe Integer
-et a n
+fet :: Integer -> Integer -> Maybe Integer
+fet a n
     | gcd a n /= 1 = Nothing
     | otherwise = pow a (-1) n
+
+-- Find alpha
+alpha :: Double -> Double -> Integer -> Integer -> Maybe Integer
+alpha f_1 f_2 a n
+    | (n == 0 || f_1 == 0 || f_2 == 0) = Nothing
+    | otherwise = alpha' a n 1
+    where
+      alpha' a n x
+        | x == a = Nothing
+        | (a * ceiling (f_1 - x' * f_2)) `mod` n == 1 = Just $ x
+        | otherwise = alpha' a n (x + 1)
+        where
+          x' = fromIntegral x
 
 --- f1: Newton-Raphson (NR), one iteraction
 f_1 :: Integer -> Integer -> Double -> Maybe Double
 f_1 a n guess
-    | a == 0 = Nothing
+    | (a == 0 || n == 0) = Nothing
     | otherwise = Just $ (guess - ((a' * guess) + 1) / a') `mod'` n'
     where
       a' = fromIntegral a
@@ -60,8 +74,23 @@ f_2 a n guess
           a' = fromIntegral a
           n' = fromIntegral n
 
+my_print :: Show a => Maybe a -> IO()
+my_print (Just x) = print x
+my_print n = print n
+
 main = do
-  print $ eea 7 120
-  print $ et 7 120
-  print $ f_1 7 120 1
-  print $ f_2 7 120 1
+  let e = 5
+  let (p, q) = (17, 13)
+
+  let n = (p - 1) * (q - 1)
+
+  let d_1   = fromMaybe 0 (f_1 e n 1)
+  let d_2   = fromMaybe 0 (f_2 e n 1)
+  let a     = fromMaybe 0 (alpha d_1 d_2 e n)
+
+  let d     = ceiling $ d_1 - fromIntegral a * d_2
+
+  putStrLn $ "EEA: " ++ show (eea e n)
+  putStrLn $ "FET: " ++ show (fet e n)
+  putStrLn $ "NR:  Just " ++ show d
+  putStrLn $ "alpha: " ++ show a ++ "   f_1: " ++ show d_1 ++ "   f_2: " ++ show d_2
