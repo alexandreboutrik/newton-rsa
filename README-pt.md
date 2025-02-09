@@ -19,8 +19,8 @@ Possible status:
 |:-------------------------|:-----------------------------------|:------------|
 | Software designing       | :white_check_mark: Done            | Decidir quais linguagens utilizar, e como implementar os algoritmos |
 | Simplified RSA           | :black_square_button: In Progress  | Implementar as 5 etapas do RSA com exceção do parâmetro 'd' |
-| Euclides estendido (EEA) | :black_square_button: In Progress  | Implementar o Algoritmo de Euclides estendido |
-| Teorema de Fermat-Euler (FET) | :white_check_mark: Done       | Implementar o Teorema de Fermat-Euler |
+| Euclides estendido (EEA) | :white_check_mark: Done            | Implementar o Algoritmo de Euclides estendido |
+| Teorema de Fermat-Euler (FET) | :black_square_button: In progress | Implementar o Teorema de Fermat-Euler |
 | Newton-Raphson (NR)      | :black_square_button: In Progress  | Implementar o método de Newton-Rasphson |
 
 ## Instruções

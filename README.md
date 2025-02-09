@@ -19,8 +19,8 @@ Possible status:
 |:-------------------------|:-----------------------------------|:------------|
 | Software designing       | :white_check_mark: Done            | Decide which languages to use and how to implement the algorithms |
 | Simplified RSA           | :black_square_button: In progress  | Implement the 5 steps of RSA, except for the 'd' parameter |
-| Extended Euclidean (EEA) | :black_square_button: In progress  | Implement the Extended Euclidean Algorithm |
-| Fermat-Euler Theorem (FET) | :white_check_mark: Done          | Implement the Fermat-Euler Theorem |
+| Extended Euclidean (EEA) | :white_check_mark: Done            | Implement the Extended Euclidean Algorithm |
+| Fermat-Euler Theorem (FET) | :black_square_button: In progress | Implement the Fermat-Euler Theorem |
 | Newton-Raphson (NR)      | :black_square_button: In progress  | Implement the Newton-Raphson method |
 
 ## Instructions
