@@ -15,13 +15,16 @@ Possible status:
 :white_square_button: Planned
 --->
 
-| Feature                  | Status                             | Description |
+| -                        | Status                             | Description |
 |:-------------------------|:-----------------------------------|:------------|
 | Software designing       | :white_check_mark: Done            | Decidir quais linguagens utilizar, e como implementar os algoritmos |
-| Simplified RSA           | :black_square_button: In Progress  | Implementar as 5 etapas do RSA com exceção do parâmetro 'd' |
+| RSA simplificado         | :black_square_button: In progess   | Implementar as 5 etapas do RSA com exceção do parâmetro 'd' |
 | Euclides estendido (EEA) | :white_check_mark: Done            | Implementar o Algoritmo de Euclides estendido |
-| Teorema de Fermat-Euler (FET) | :black_square_button: In progress | Implementar o Teorema de Fermat-Euler |
-| Newton-Raphson (NR)      | :black_square_button: In Progress  | Implementar o método de Newton-Rasphson |
+| Fermat-Euler (FET)       | :black_square_button: In progress  | Implementar o Teorema de Fermat-Euler |
+| Newton-Raphson (NR)      | :black_square_button: In progress  | Implementar o método de Newton-Rasphson |
+| Benchmark                | :white_square_button: Planned      | Realizar os testes de benchmark |
+| Escrita do artigo        | :black_square_button: In progress  | Terminar de escrever o artigo |
+| Publicação do artigo     | :white_square_button: Planned      | Publicar o artigo em alguma Revista |
 
 ## Instruções
 
