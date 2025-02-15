@@ -2,12 +2,34 @@ import Data.Maybe (fromJust)
 import Data.Fixed
 import Data.Maybe
 
+import System.Environment (getArgs)
+import System.Exit (exitSuccess, exitFailure)
+
+--- Euler's Totient function \phi(n)
+phi :: Integer -> Integer
+phi n = round $ fromIntegral n * product [ 1 - (1 / fromIntegral p) | p <- (pf n) ]
+
+--- Compute the Prime Factors of n
+pf :: Integer -> [Integer]
+pf n = pf' n 2
+    where
+      pf' 1 _ = []
+      pf' m p
+        | p * p > m = [m]
+        | m `mod` p == 0 = p : pf' (m `div` p) p
+        | otherwise = pf' m (p + 1)
+
 --- Power function with modulus
--- Compute 'num ^ pwr mod modulus'
+-- Compute 'a^b mod m'
 pow :: Integer -> Integer -> Integer -> Maybe Integer
-pow num pwr modulus | modulus == 0 = Nothing
-                    | pwr < 0 = Just $ num ^ ((pwr + modulus) `mod` modulus) `mod` modulus
-                    | otherwise = Just $ (num ^ pwr) `mod` modulus
+pow a b m | m == 0 = Nothing
+          | b < 0 = pow a ((phi m) - 1) m
+          | otherwise = Just $ pow' a b 1
+          where
+            pow' _ 0 result = result
+            pow' a b result
+              | even b = pow' ((a * a) `mod` m) (b `div` 2) result
+              | otherwise = pow' ((a * a) `mod` m) (b `div` 2) ((result * a) `mod` m)
 
 --- Check if a number 'n' is prime using the trial division method
 is_prime :: Integer -> Bool
@@ -18,8 +40,15 @@ is_prime n | n < 2 = False
                                  | n `mod` divisor == 0 = False
                                  | otherwise = is_prime' n (divisor + 1)
 
+--- Generate 'e'
+gen_e :: Integer -> Maybe Integer
+gen_e n = gen' 2 n
+    where
+      gen' e n | e == n = Nothing
+               | gcd e n == 1 = Just $ e
+               | otherwise = gen' (e + 1) n
+
 --- Extended Euclidean Algorithm (EEA)
--- Compute the modular inverse of 'a' under modulo 'n'
 eea :: Integer -> Integer -> Maybe Integer
 eea a n
     | a' == 1 = Just $ x `mod` n
@@ -33,7 +62,6 @@ eea a n
         (a', x', y') = egcd (b `mod` a) a
 
 --- Fermat-Euler Theorem
--- Compute the modular inverse of 'a' under modulo 'n'
 fet :: Integer -> Integer -> Maybe Integer
 fet a n
     | gcd a n /= 1 = Nothing
@@ -78,17 +106,33 @@ my_print :: Show a => Maybe a -> IO()
 my_print (Just x) = print x
 my_print n = print n
 
+main :: IO()
 main = do
-  let e = 5
-  let (p, q) = (17, 13)
+  args <- getArgs
+
+  if length args /= 2 then exitFailure else do
+
+  let p = read (args !! 0) :: Integer
+  let q = read (args !! 1) :: Integer
 
   let n = (p - 1) * (q - 1)
 
+  let e = fromMaybe 0 (gen_e n)
+  if e == 0 then exitFailure else do
+
   let d_1   = fromMaybe 0 (f_1 e n 1)
   let d_2   = fromMaybe 0 (f_2 e n 1)
+  if (d_1 == 0 || d_2 == 0) then exitFailure else do
+
   let a     = fromMaybe 0 (alpha d_1 d_2 e n)
+  if a == 0 then exitFailure else do
 
   let d     = ceiling $ d_1 - fromIntegral a * d_2
+
+  putStrLn $ "Prime factors (" ++ show n ++ ") : " ++ show (pf n)
+  putStrLn $ "phi(" ++ show n ++ ") : " ++ show (phi n)
+
+  putStrLn $ "n = " ++ show n ++ "   e = " ++ show e
 
   putStrLn $ "EEA: " ++ show (eea e n)
   putStrLn $ "FET: " ++ show (fet e n)
