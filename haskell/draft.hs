@@ -1,13 +1,14 @@
 import Data.Maybe (fromJust)
 import Data.Fixed
 import Data.Maybe
+import Data.List (nub)
 
 import System.Environment (getArgs)
 import System.Exit (exitSuccess, exitFailure)
 
 --- Euler's Totient function \phi(n)
 phi :: Integer -> Integer
-phi n = round $ fromIntegral n * product [ 1 - (1 / fromIntegral p) | p <- (pf n) ]
+phi n = round $ fromIntegral n * product [ 1 - (1 / fromIntegral p) | p <- nub (pf n) ]
 
 --- Compute the Prime Factors of n
 pf :: Integer -> [Integer]
@@ -115,26 +116,30 @@ main = do
   let p = read (args !! 0) :: Integer
   let q = read (args !! 1) :: Integer
 
-  let n = (p - 1) * (q - 1)
+  if is_prime(p) == False then exitFailure else do
+  if is_prime(q) == False then exitFailure else do
 
-  let e = fromMaybe 0 (gen_e n)
+  let n = p * q
+  let phi_v = (p - 1) * (q - 1)
+
+  let e = fromMaybe 0 (gen_e phi_v)
   if e == 0 then exitFailure else do
 
-  let d_1   = fromMaybe 0 (f_1 e n 1)
-  let d_2   = fromMaybe 0 (f_2 e n 1)
+  let d_1   = fromMaybe 0 (f_1 e phi_v 1)
+  let d_2   = fromMaybe 0 (f_2 e phi_v 1)
   if (d_1 == 0 || d_2 == 0) then exitFailure else do
 
-  let a     = fromMaybe 0 (alpha d_1 d_2 e n)
+  let a     = fromMaybe 0 (alpha d_1 d_2 e phi_v)
   if a == 0 then exitFailure else do
 
   let d     = ceiling $ d_1 - fromIntegral a * d_2
 
-  putStrLn $ "Prime factors (" ++ show n ++ ") : " ++ show (pf n)
-  putStrLn $ "phi(" ++ show n ++ ") : " ++ show (phi n)
+  putStrLn $ "Prime factors (" ++ show phi_v ++ ") : " ++ show (pf phi_v)
+  putStrLn $ "phi(" ++ show phi_v ++ ") : " ++ show (phi phi_v)
 
   putStrLn $ "n = " ++ show n ++ "   e = " ++ show e
 
-  putStrLn $ "EEA: " ++ show (eea e n)
-  putStrLn $ "FET: " ++ show (fet e n)
+  putStrLn $ "EEA: " ++ show (eea e phi_v)
+  putStrLn $ "FET: " ++ show (fet e phi_v)
   putStrLn $ "NR:  Just " ++ show d
   putStrLn $ "alpha: " ++ show a ++ "   f_1: " ++ show d_1 ++ "   f_2: " ++ show d_2
