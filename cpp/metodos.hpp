@@ -5,7 +5,6 @@
 #include <boost/multiprecision/cpp_dec_float.hpp>
 #include <boost/multiprecision/fwd.hpp>
 #include <cmath>
-#include <cmath>
 #include <cstdlib>
 #include <optional>
 #include <tuple>
