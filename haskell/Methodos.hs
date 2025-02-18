@@ -2,6 +2,7 @@
 module Methodos where
 
 import Data.Maybe (fromJust)
+import Data.Maybe -- fromMaybe
 import Data.Fixed -- mod'
 import Data.List (nub)
 
@@ -84,3 +85,13 @@ f_2 a n guess
       where
         a' = fromIntegral a
         n' = fromIntegral n
+
+-- Newton-Raphson (NR)
+nr :: Integer -> Integer -> Maybe Integer
+nr a n
+  | gcd a n /= 1 = Nothing
+  | otherwise = Just $ ceiling $ d1 - fromIntegral alp * d2
+  where
+    d1 = fromMaybe 0 (f_1 a n 1)
+    d2 = fromMaybe 0 (f_2 a n 1)
+    alp = fromMaybe 0 (alpha d1 d2 a n)
