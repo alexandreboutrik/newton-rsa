@@ -3,19 +3,13 @@
 
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/multiprecision/cpp_dec_float.hpp>
-#include <boost/multiprecision/fwd.hpp>
 #include <cmath>
-#include <cstdlib>
 #include <optional>
 #include <tuple>
 #include <set>
 
 using namespace std;
 using namespace boost::multiprecision;
-
-cpp_dec_float_50 bfmod(cpp_dec_float_50 x, cpp_dec_float_50 y) {
-  return x - y * floor(x / y);
-}
 
 set<cpp_int> prime_factors(cpp_int n, int p) {
 
@@ -46,24 +40,19 @@ cpp_int euler_totient(cpp_int n) {
   set<cpp_int> factors = prime_factors(n, 2);
   cpp_dec_float_50 phi = (cpp_dec_float_50) n;
 
-  // Multiply the product (1 - (1/p)) for each prime factor p
   for (cpp_int p : factors)
     phi *= (1 - (1 / (cpp_dec_float_50) p));
 
   return (cpp_int) phi;
 }
 
-// Power Function with modulus
-// Compute num pwq mod modulus
 optional<cpp_int> pow(cpp_int a, cpp_int b, cpp_int n) {
 
   if (n == 0)
     return nullopt;
 
-  if (b < 0) {
-    cpp_int phi_n = euler_totient(n) - 1;
-    return pow(a, phi_n, n);
-  }
+  if (b < 0)
+    return pow(a, (euler_totient(n) - 1), n);
 
   cpp_int result = 1;
 
@@ -103,7 +92,7 @@ optional<cpp_int> eea(cpp_int a, cpp_int n) {
   return t;
 }
 
-optional<cpp_int> flt(cpp_int a, cpp_int n) {
+optional<cpp_int> fet(cpp_int a, cpp_int n) {
 
   if (gcd(a, n) != 1)
     return nullopt;
@@ -138,7 +127,7 @@ cpp_dec_float_50 f_1(cpp_int a, cpp_int n) {
   cpp_dec_float_50 g = (x - (f / f_));
   cpp_dec_float_50 h = (cpp_dec_float_50) n;
 
-  x = bfmod(g, h);
+  x = g - h * floor(g / h);
 
   return x;
 }
@@ -150,17 +139,16 @@ optional<cpp_int> nr(cpp_int a, cpp_int n) {
 
   auto d1 = f_1(a, n);
   auto [d2, k] = f_2(a, n);
+  cpp_int alpha;
 
-  cpp_int alpha = 1;
-  for (; alpha < a; alpha++) {
-    if ((round(bfmod(((cpp_dec_float_50)a * round(d1-(cpp_dec_float_50)alpha*d2)), (cpp_dec_float_50)n))) == 1)
+  for (alpha = 1; alpha <= a; alpha++) {
+    cpp_int s = (cpp_int) ((d1 - (cpp_dec_float_50) alpha*d2) + 1);
+    if ((a * s % n) == 1)
       break;
   }
 
-  cout << "f1: " << d1 << "--- f2: " << d2 << "--- alpha: " << alpha << endl;
-  
-  return (cpp_int) (d1-(cpp_dec_float_50)alpha*d2);
+  return (cpp_int) ((d1-(cpp_dec_float_50)alpha*d2) + 1);
 }
 
-#endif // ! METODOS_H_INCLUDED
+#endif // METODOS_H_INCLUDED
 
